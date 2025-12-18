@@ -9,5 +9,12 @@ class Quack extends Model
 {
     /** @use HasFactory<\Database\Factories\QuackFactory> */
     use HasFactory;
-    protected $fillable = ['mensaje', 'nickname'];
+    protected $fillable = ['mensaje', 'user_id'];
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+    public function quashtags() {
+        return $this->belongsToMany(Quashtag::class, 'quack_quashtag')->withTimestamps();
+    }
 }

@@ -28,8 +28,8 @@
     <main>
         <form method="POST" action="/quacks">
             @csrf
-            <label for="nickname">Nick:</label>
-            <input type="text" name="nickname">
+            <label for="nickname"></label>
+            <input type="hidden" name="user_id" value="{{1}}" readonly>
             <br>
             <textarea name="mensaje" id="" cols="30" rows="10"></textarea>
             <br>
