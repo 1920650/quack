@@ -42,7 +42,7 @@
     <main>
         @foreach ($quacks as $quack)
         <article>
-            <h3>{{ $quack->nickname }} {{ $quack->created_at }}</h3>
+            <h3>{{ $quack->user->name }} {{ $quack->created_at }}</h3>
             <p>{{ $quack->mensaje }}</p>
             <p><a href="/quacks/{{$quack->id}}">Ver mas detalles</a></p>
             <form action="/quacks/{{$quack->id}}" method="POST">

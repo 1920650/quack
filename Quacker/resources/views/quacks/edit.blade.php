@@ -30,7 +30,7 @@
             @csrf
             @method('PATCH')
             <label for="nickname">Nick:</label>
-            <input type="text" name="nickname" value="{{ $quack->nickname }}">
+            <input type="text" name="nickname" value="{{ $quack->user->name }}" readonly>
             <br>
             <textarea name="mensaje" id="" cols="30" rows="10">{{$quack->mensaje}}</textarea>
             <br>

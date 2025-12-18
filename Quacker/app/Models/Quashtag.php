@@ -10,4 +10,8 @@ class Quashtag extends Model
     /** @use HasFactory<\Database\Factories\QuashtagFactory> */
     use HasFactory;
     protected $fillable = ['tag'];
+
+    public function quacks() {
+        return $this->belongsToMany(Quack::class, 'quack_quashtag')->withTimestamps();
+    }
 }
