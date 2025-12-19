@@ -3,12 +3,17 @@
 use App\Http\Controllers\QuacksController;
 use App\Http\Controllers\QuashtagController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('quacks', QuacksController::class);
-Route::resource('users', UserController::class);
-Route::resource('quashtags', QuashtagController::class);
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [LoginController::class, 'login']);
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::resource('quacks', QuacksController::class)->middleware('auth');
+Route::resource('users', UserController::class)->middleware('auth');
+Route::resource('quashtags', QuashtagController::class)->middleware('auth');

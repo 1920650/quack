@@ -40,6 +40,13 @@
 </head>
 <body>
     <main>
+         @if (Auth::check())
+            <h2 style="margin-bottom: 20px;">Bienvenido, {{ Auth::user()->name }}</h2>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" style="padding: 5px 10px; border-radius: 5px; background-color: lightcoral; color: white; border: none;">Cerrar sesión</button>
+            </form>
+        @endif
         @foreach ($quacks as $quack)
         <article>
             <h3>{{ $quack->user->name }} {{ $quack->created_at }}</h3>
