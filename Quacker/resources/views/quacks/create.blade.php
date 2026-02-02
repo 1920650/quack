@@ -29,7 +29,7 @@
         <form method="POST" action="/quacks">
             @csrf
             <label for="nickname"></label>
-            <input type="hidden" name="user_id" value="{{1}}" readonly>
+            <input type="hidden" name="user_id" value="{{ $user_id }}" readonly>
             <br>
             <textarea name="mensaje" id="" cols="30" rows="10"></textarea>
             <br>

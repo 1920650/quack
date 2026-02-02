@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quack;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class QuacksController extends Controller
@@ -22,7 +23,10 @@ class QuacksController extends Controller
      */
     public function create()
     {
-        return view('quacks.create');
+        $user_id = User::inRandomOrder()->first()->id;
+        return view('quacks.create', [
+            'user_id' => $user_id
+        ]);
     }
 
     /**
