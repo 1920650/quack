@@ -52,12 +52,14 @@
             <h3>{{ $quack->user->name }} {{ $quack->created_at }}</h3>
             <p>{{ $quack->mensaje }}</p>
             <p><a href="/quacks/{{$quack->id}}">Ver mas detalles</a></p>
+            @if($quack->user_id == auth()->user()->id)
             <form action="/quacks/{{$quack->id}}" method="POST">
                 @method('DELETE')
                 @csrf
                 <button>Eliminar</button>
             </form>
             <p><a href="/quacks/{{ $quack->id }}/edit">Editar</a></p>
+            @endif
         </article>
         @endforeach
     </main>
