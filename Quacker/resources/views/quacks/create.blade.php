@@ -28,8 +28,7 @@
     <main>
         <form method="POST" action="/quacks">
             @csrf
-            <label for="nickname"></label>
-            <input type="hidden" name="user_id" value="{{ $user_id }}" readonly>
+            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
             <br>
             <textarea name="mensaje" id="" cols="30" rows="10"></textarea>
             <br>
