@@ -6,7 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [QuacksController::class, 'index']);
+Route::get('/', [LoginController::class, 'login']);
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
