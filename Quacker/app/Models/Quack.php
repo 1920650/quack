@@ -17,4 +17,10 @@ class Quack extends Model
     public function quashtags() {
         return $this->belongsToMany(Quashtag::class, 'quack_quashtag')->withTimestamps();
     }
+    public function requackers() {
+        return $this->belongsToMany(User::class, 'requack')->withTimestamps();
+    }
+    public function quavers() {
+        return $this->belongsToMany(User::class, 'quav')->withTimestamps();
+    }
 }

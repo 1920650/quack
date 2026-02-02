@@ -49,5 +49,14 @@ class User extends Authenticatable
     public function quacks() {
         return $this->hasMany(Quack::class);
     }
-    
+
+    public function requacks() {
+        return $this->belongsToMany(Quack::class, 'requack')->withTimestamps();
+    }
+    public function quavs() {
+        return $this->belongsToMany(Quack::class, 'quav')->withTimestamps();
+    }
+    public function follows() {
+        return $this->belongsToMany(User::class, 'follow')->withTimestamps();
+    }
 }
