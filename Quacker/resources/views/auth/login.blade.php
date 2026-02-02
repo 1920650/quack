@@ -15,6 +15,12 @@
     <input type="email" name="email" placeholder="Email" required>
     <input type="password" name="password" placeholder="password" required>
     <button type="submit">Login</button>
+
+    <p>
+        no tienes cuenta?
+        <a href="{{ route('register') }}">Registrarse</a>
+
+    </p>
 </form>
 </body>
 </html>
