@@ -25,6 +25,7 @@
     </style>
 </head>
 <body>
+ 
     <main>
         <article>
             <h3>{{ $quack->user->name }} {{ $quack->created_at }}</h3>
