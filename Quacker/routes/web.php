@@ -14,6 +14,8 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::resource('quacks', QuacksController::class)->middleware('auth');
+Route::post('/quav/{quack}', [QuacksController::class, 'quav'])->middleware('auth')->name('quav');
+Route::delete('/dequav/{quack}', [QuacksController::class, 'dequav'])->middleware('auth')->name('dequav');
 Route::resource('users', UserController::class)->middleware('auth');
 Route::resource('quashtags', QuashtagController::class)->middleware('auth');
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Quack;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class QuacksController extends Controller
 {
@@ -73,6 +74,21 @@ class QuacksController extends Controller
     public function destroy(string $id)
     {
         Quack::destroy($id);
+        return redirect('/quacks');
+    }
+
+    public function quav(Quack $quack) {
+        $quack->quavs()->attach(Auth::user()->id);
+        return redirect('/quacks');
+    }
+
+    public function dequav(Quack $quack) {
+        $quack->quavs()->detach(Auth::user()->id);
+        return redirect('/quacks');
+    }
+
+    public function requav(Quack $quack) {
+        $quack->requacks()->attach(Auth::user()->id);
         return redirect('/quacks');
     }
 }

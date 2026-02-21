@@ -59,4 +59,16 @@ class User extends Authenticatable
     public function follows() {
         return $this->belongsToMany(User::class, 'follow')->withTimestamps();
     }
+
+    public function getFeedAttribute() {
+        $feed = $this->quacks()
+        ->select( 'quacks.*', 'created_at as feed_date')
+        ->union(
+            $this
+            ->requacks()
+            ->select('quacks.*', 'requack.created_at as feed_date'))
+            ->orderBy('feed_date', 'desc')
+            ->get();
+        return $feed;
+    }
 }

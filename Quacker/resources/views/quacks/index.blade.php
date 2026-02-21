@@ -47,10 +47,25 @@
                 <button type="submit" style="padding: 5px 10px; border-radius: 5px; background-color: lightcoral; color: white; border: none;">Cerrar sesión</button>
             </form>
         @endif
+        <p><?= count($quacks) ?> quacks</p>
         @foreach ($quacks as $quack)
         <article>
             <h3>{{ $quack->user->name }} {{ $quack->created_at }}</h3>
             <p>{{ $quack->mensaje }}</p>
+            @if(auth()->user()->id == $quack->quavs->pluck('id')->first())
+            <form action="/dequav/{{ $quack->id }}" method="POST">
+                @method('DELETE')
+                @csrf
+                <button>Dequav</button>
+            </form>
+            @endif
+            @if(auth()->user()->id != $quack->user_id && auth()->user()->id != $quack->quavs->pluck('id')->first())
+            <form action="/quav/{{ $quack->id }}" method="POST">
+                @csrf
+                <button>🦆Quav</button>
+            </form>
+            @endif
+            <?= count($quack->quavs) ?>
             <p><a href="/quacks/{{$quack->id}}">Ver mas detalles</a></p>
             @if($quack->user_id == auth()->user()->id)
             <form action="/quacks/{{$quack->id}}" method="POST">
