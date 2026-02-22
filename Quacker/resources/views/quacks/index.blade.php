@@ -55,7 +55,7 @@
 <body>
     <main>
         @if (Auth::check())
-        <h2 style="margin-bottom: 20px;">Bienvenido, <a href="/users/{{ Auth::user()->id }}">{{ Auth::user()->name }}</a></h2>
+        <h2 style="margin-bottom: 20px;">Bienvenido, <a href="/users/{{ Auth::user()->id }}" style="color: white; text-decoration: none;">{{ Auth::user()->name }}</a></h2>
         <form method="POST" action="{{ route('logout') }}">
             @csrf
             <button type="submit" style="padding: 5px 10px; border-radius: 5px; background-color: lightcoral; color: white; border: none;">Cerrar sesión</button>
@@ -64,7 +64,7 @@
         <p><?= count($quacks) ?> quacks</p>
         @foreach ($quacks as $quack)
         <article>
-            <h3><a href="/users/{{ $quack->user->id }}">{{ $quack->user->name }}</a> {{ date('d/m/Y H:i', strtotime($quack->created_at)) }}</h3>
+            <h3><a href="/users/{{ $quack->user->id }}" style="color: black; text-decoration: none;">{{ $quack->user->name }}</a> {{ date('d/m/Y H:i', strtotime($quack->created_at)) }}</h3>
             @if(auth()->user()->id != $quack->user_id && !auth()->user()->follows->contains('id', $quack->user->id))
             <form action="/users/{{ $quack->user->id }}/follow" method="POST">
                 @csrf

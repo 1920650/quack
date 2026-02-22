@@ -72,7 +72,7 @@ class UserController extends Controller
 
         $user->update($data);
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.show', $user);
     }
 
     /**

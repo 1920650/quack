@@ -36,8 +36,25 @@
 
 <body>
     <h1>{{ $user->name }}</h1>
-
+    @if(auth()->user()->id == $user->id)
+    <a href="{{ route('users.edit', $user) }}" style="color: cyan">Editar Perfil</a>
+    @endif
     <p><strong>Email:</strong> {{ $user->email }}</p>
+    @if(auth()->user()->id != $user->id)
+        @if(auth()->user()->follows->contains('id', $user->id))
+        <form action="/users/{{ $user->id }}/unfollow" method="POST">
+            @csrf
+            @method('DELETE')
+            <button>Unfollow</button>
+        </form>
+        @else
+        <form action="/users/{{ $user->id }}/follow" method="POST">
+            @csrf
+            <button>Follow</button>
+        </form>
+        @endif
+        @endif
+    <p><strong>Siguiendo:</strong> {{ count($user->follows) }}</p>
     <p><strong>Seguidores:</strong> {{ count($user->followers) }}</p>
 
     <a href="{{ route('quacks.index') }}" style="color: cyan">Volver</a>

@@ -15,7 +15,7 @@ class QuacksController extends Controller
     public function index()
     {
         return view('quacks.index', [
-        'quacks' => Quack::get()->sortBy('created_at')
+        'quacks' => Quack::get()->sortByDesc('created_at')
     ]);
     }
 
