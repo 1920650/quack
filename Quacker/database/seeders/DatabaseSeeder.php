@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
         Quack::factory(10)->create();
 
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Ignacio Mascarell LLorens',
+            'email' => 'ignacioelmejor@gmail.com',
             'password' => 'ignacio'
         ]);
     }

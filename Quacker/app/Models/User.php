@@ -57,7 +57,10 @@ class User extends Authenticatable
         return $this->belongsToMany(Quack::class, 'quav')->withTimestamps();
     }
     public function follows() {
-        return $this->belongsToMany(User::class, 'follow')->withTimestamps();
+        return $this->belongsToMany(User::class, 'follow', 'follower_id', 'followed_id')->withTimestamps();
+    }
+    public function followers(){
+        return $this->belongsToMany(User::class, 'follow', 'followed_id', 'follower_id');
     }
 
     public function getFeedAttribute() {

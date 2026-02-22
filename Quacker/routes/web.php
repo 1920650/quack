@@ -17,6 +17,8 @@ Route::resource('quacks', QuacksController::class)->middleware('auth');
 Route::post('/quav/{quack}', [QuacksController::class, 'quav'])->middleware('auth')->name('quav');
 Route::delete('/dequav/{quack}', [QuacksController::class, 'dequav'])->middleware('auth')->name('dequav');
 Route::resource('users', UserController::class)->middleware('auth');
+Route::post('/users/{user}/follow', [UserController::class, 'follow'])->middleware('auth')->name('follow');
+Route::delete('/users/{user}/unfollow', [UserController::class, 'unfollow'])->middleware('auth')->name('unfollow');
 Route::resource('quashtags', QuashtagController::class)->middleware('auth');
 
 Route::get('register', [RegisterController::class, 'showRegisterForm'])->name('register');

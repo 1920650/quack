@@ -6,10 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Quacks</title>
     <style>
+         body {
+            background-color: #191b1d;
+            color: white;
+        }
+
+        h1 {
+            color: black;
+        }
+
         main {
             width: 80%;
             margin: 0 auto;
         }
+
         article {
             background-color: lightcyan;
             margin: 20px;
@@ -17,20 +27,23 @@
             border-radius: 10px;
             box-shadow: 2px 2px 5px black;
         }
-       h1{
-        text-align: center;
-       }
-       textarea{
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc; 
-    border-radius: 8px;   
-    box-sizing: border-box; 
-       }
-          #volver{
-        float: right;
-        text-decoration: none;
-       }
+
+        h1 {
+            text-align: center;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        #volver {
+            float: right;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>

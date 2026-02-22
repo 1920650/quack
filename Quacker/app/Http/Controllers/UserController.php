@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -81,5 +82,15 @@ class UserController extends Controller
     {
         $user->delete();
         return redirect('/users');
+    }
+
+    public function follow(User $user) {
+       Auth::user()->follows()->attach($user->id);
+        return redirect()->back();
+    }
+
+    public function unfollow(User $user) {
+        Auth::user()->follows()->detach($user->id);
+        return redirect()->back();
     }
 }
