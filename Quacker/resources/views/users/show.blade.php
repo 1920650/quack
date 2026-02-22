@@ -10,10 +10,12 @@
             background-color: #191b1d;
             color: white;
         }
+
         main {
             width: 80%;
             margin: 0 auto;
         }
+
         article {
             background-color: lightcyan;
             margin: 20px;
@@ -24,6 +26,7 @@
             color: black;
             border: 4px solid #6e6e6e8c;
         }
+
         article:hover {
             transform: scale(1.1);
             box-shadow: 10px 10px 10px black
@@ -40,8 +43,8 @@
     <a href="{{ route('quacks.index') }}" style="color: cyan">Volver</a>
     <h2 style="text-align: center;">QUACKS</h2>
     <main>
-    @foreach ($user->quacks as $quack)
-    <article>
+        @foreach ($user->quacks as $quack)
+        <article>
             <h3><a href="/users/{{ $quack->user->id }}">{{ $quack->user->name }}</a> {{ date('d/m/Y H:i', strtotime($quack->created_at)) }}</h3>
             <p>{{ $quack->mensaje }}</p>
             @if(auth()->user()->id == $quack->quavs->contains('id', auth()->user()->id))
